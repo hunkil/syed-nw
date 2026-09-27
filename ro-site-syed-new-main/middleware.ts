@@ -23,20 +23,20 @@ export function middleware(req: NextRequest) {
 
   // Extract host from headers
   const forwardedHost = req.headers.get('x-forwarded-host');
-  const rawHost = forwardedHost  req.headers.get('host')  '';
+  const rawHost = forwardedHost || req.headers.get('host') || '';
   const hostClean = rawHost.toLowerCase().trim();
   const hostname = hostClean.split(':')[0].trim();
   const proto = req.headers.get('x-forwarded-proto') || 'https';
 
   // ===== IP LOGGING START =====
   const ip =
-    req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
-    req.headers.get('x-real-ip') ||
-    'unknown';
+  req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+  req.headers.get('x-real-ip') ||
+  'unknown';
 
-  console.log(
-    [VISITOR] IP=${ip} HOST=${hostname} PATH=${url.pathname}
-  );
+console.log(
+  [VISITOR] IP=${ip} HOST=${hostname} PATH=${url.pathname}
+);
   // ===== IP LOGGING END =====
 
   let matchedSubdomain: string | null = null;
