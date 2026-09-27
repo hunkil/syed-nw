@@ -1,0 +1,8 @@
+{
+  "name": "ro-site-bangalore-syed-new",
+  "description": "Modern, mobile-first booking platform for RO repairs, maintenance, and filter replacements for all major water purifier brands in Bangalore.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
